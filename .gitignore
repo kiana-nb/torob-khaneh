@@ -1,0 +1,9 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+.env*
+.DS_Store
+# raw crawl responses stay local; only the normalized JSON is committed
+scripts/crawl/.cache/
