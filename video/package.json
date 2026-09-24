@@ -1,0 +1,9 @@
+{
+  "name": "torob-khaneh-video",
+  "private": true,
+  "type": "module",
+  "description": "Scripted screen capture + ffmpeg assembly for the demo video",
+  "devDependencies": {
+    "playwright-core": "^1.63.0"
+  }
+}

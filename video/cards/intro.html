@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <title>intro</title>
+  <link rel="stylesheet" href="card.css" />
+</head>
+<body>
+  <div class="glow a"></div><div class="glow b"></div><div class="grid"></div>
+  <div class="center">
+    <div>
+      <svg class="mark in pop" style="--d:.1s" viewBox="0 0 48 48" aria-hidden="true">
+        <defs>
+          <linearGradient id="bg" x1="6" y1="2" x2="42" y2="46" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ff5d7e"/><stop offset=".55" stop-color="#e11d48"/><stop offset="1" stop-color="#b3123c"/></linearGradient>
+          <linearGradient id="leaf" x1="24" y1="4" x2="24" y2="20" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#86efac"/><stop offset="1" stop-color="#22c55e"/></linearGradient>
+        </defs>
+        <rect width="48" height="48" rx="14" fill="url(#bg)"/>
+        <path d="M24 17.6c-.9-4.6-4.3-7.7-9.4-7.9.6 5 4.4 8.3 9.4 7.9z" fill="url(#leaf)"/>
+        <path d="M24 17.6c.2-5.7 3.6-10 9.8-11 .2 6.2-3.6 10.6-9.8 11z" fill="url(#leaf)"/>
+        <path d="M11.8 26.3 22.1 18a3 3 0 0 1 3.8 0l10.3 8.3c.5.4.8 1 .8 1.6V37a4 4 0 0 1-4 4H15a4 4 0 0 1-4-4v-9.1c0-.6.3-1.2.8-1.6z" fill="#fff"/>
+        <path d="M20.4 41v-5.6a3.6 3.6 0 0 1 7.2 0V41z" fill="url(#bg)"/>
+      </svg>
+      <h1 class="title in" style="--d:.45s">ترب <b>خانه</b></h1>
+      <p class="tag in" style="--d:.8s">همه‌ی خانه‌های تهران، یک‌جا و قابل مقایسه</p>
+      <div class="meta in" style="--d:1.15s">
+        <span class="pill">دموی چالش AI Product Engineer · ترب</span>
+        <span class="pill">کیانا نبی‌پور</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.play = () => document.body.classList.add('go')
+    if (!location.search.includes('paused')) play()
+  </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <title>terminal</title>
+  <link rel="stylesheet" href="card.css" />
+  <style>
+    .wrap { position: absolute; inset: 0; display: grid; grid-template-columns: 430px 1fr; gap: 44px; align-items: center; padding: 0 72px; }
+    .side h2 { font-size: 46px; font-weight: 900; line-height: 1.2; margin-top: 16px; }
+    .side h2 b { color: var(--brand-2); }
+    .chips { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 10px; }
+    .chips .pill { font-size: 17px; }
+    .term { direction: ltr; background: #16161a; border-radius: 18px; box-shadow: 0 40px 90px -30px rgb(0 0 0 / .8), inset 0 0 0 1px rgb(255 255 255 / .07); overflow: hidden; }
+    .bar { display: flex; gap: 8px; padding: 14px 16px; background: #1d1d22; }
+    .bar i { width: 12px; height: 12px; border-radius: 50%; display: block; }
+    .body { padding: 20px 24px 26px; font: 17px/1.75 'Cascadia Code', Consolas, monospace; color: #d4d4d8; min-height: 470px; white-space: pre; }
+    .cmd { color: #fff; }
+    .cmd::before { content: '$ '; color: var(--brand-2); }
+    .ok { color: #4ade80; }
+    .dim { color: #8b8b95; }
+    .hash { color: #fbbf24; }
+    .line { opacity: 0; }
+    .line.on { opacity: 1; animation: fadein .25s ease-out; }
+    @keyframes fadein { from { opacity: 0; transform: translateY(4px); } }
+    .caret::after { content: '▋'; color: var(--brand-2); animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+  </style>
+</head>
+<body>
+  <div class="glow a"></div><div class="grid"></div>
+  <div class="wrap">
+    <div class="side">
+      <p class="eyebrow in" style="--d:.05s">ساخت با AI</p>
+      <h2 class="in" style="--d:.2s">از تحقیق تا دیپلوی،<br /><b>با Claude Code</b></h2>
+      <div class="chips in" style="--d:.45s">
+        <span class="pill">تحقیق کاربر</span><span class="pill">crawl و پایپ‌لاین داده</span><span class="pill">کد و تست</span><span class="pill">QA با ایجنت مرورگر</span>
+      </div>
+    </div>
+    <div class="term in" style="--d:.3s">
+      <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div>
+      <div class="body" id="out"></div>
+    </div>
+  </div>
+  <script>
+    // real commands and their real output (numbers from web/src/data/report.json, tests, build, git log)
+    const script = [
+      ['cmd', 'node scripts/crawl/build-data.mjs'],
+      ['', '<span class="dim">rawListings</span> 739  <span class="dim">parsed</span> 718  <span class="dim">skipped</span> {shared: 15, area: 6}'],
+      ['', '<span class="dim">homes</span> 698  <span class="dim">merged</span> 39 ads → 19 homes  <span class="dim">metro</span> 141'],
+      ['cmd', 'npx tsx web/scripts/intent.test.ts'],
+      ['', '<span class="ok">20/20 passed</span> · removeSpan ok'],
+      ['cmd', 'npm run build'],
+      ['', '<span class="ok">✓</span> Generating static pages (729/729)'],
+      ['cmd', 'git log --oneline'],
+      ['', '<span class="hash">94b68a5</span> README: live demo link, hero screenshot, deploy notes'],
+      ['', '<span class="hash">f8f6ac7</span> About page redesign, product tour, custom sort menu, …'],
+      ['', '<span class="hash">0401bdd</span> Polish: hero motion, animated filters sheet, new logo, …'],
+      ['', '<span class="hash">fc768dd</span> Torob Khaneh: Torob-for-homes demo (Next.js static, …)'],
+      ['', '<span class="dim">Co-Authored-By: Claude Opus 5.5</span>'],
+    ]
+    const out = document.getElementById('out')
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
+    async function run() {
+      await sleep(700)
+      for (const [kind, text] of script) {
+        const el = document.createElement('div')
+        el.className = 'line on ' + kind
+        out.appendChild(el)
+        if (kind === 'cmd') {
+          el.classList.add('caret')
+          for (const ch of text) { el.textContent += ch; await sleep(26) }
+          el.classList.remove('caret')
+          await sleep(220)
+        } else {
+          el.innerHTML = text
+          await sleep(170)
+        }
+      }
+      const c = document.createElement('div'); c.className = 'line on cmd caret'; out.appendChild(c)
+    }
+    window.play = () => { document.body.classList.add('go'); run() }
+    if (!location.search.includes('paused')) play()
+  </script>
+</body>
+</html>

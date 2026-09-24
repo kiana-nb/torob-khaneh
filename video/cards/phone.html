@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <title>phone</title>
+  <link rel="stylesheet" href="card.css" />
+  <style>
+    /* 1536×864 CSS px at DPR 1.25 = 1920×1080. Screen hole: 404×874 device px at (560, 103). */
+    .screen { position: absolute; left: 448px; top: 82.4px; width: 323.2px; height: 699.2px; border-radius: 38px; }
+    .bezel { position: absolute; left: 436px; top: 70.4px; width: 347.2px; height: 723.2px; border-radius: 50px; box-shadow: 0 0 0 12px #111114, 0 50px 110px -30px rgb(0 0 0 / .8), 0 0 0 13.5px rgb(255 255 255 / .08); }
+    .island { position: absolute; left: 574.6px; top: 92px; width: 70px; height: 20px; border-radius: 12px; background: #000; }
+    .copy { position: absolute; right: 150px; top: 50%; transform: translateY(-50%); width: 520px; }
+    .copy h2 { font-size: 54px; font-weight: 900; line-height: 1.2; margin-top: 18px; }
+    .copy h2 b { color: var(--brand-2); }
+    .copy p { margin-top: 16px; font-size: 22px; line-height: 1.8; color: rgb(255 255 255 / .7); }
+    body.frame { background: transparent; }
+    body.frame .bgonly { display: none; }
+    /* in "frame" mode the screen area is a transparent hole cut out of the bezel */
+    body.frame .bezel { background: transparent; }
+    body:not(.frame) .frameonly { display: none; }
+  </style>
+</head>
+<body>
+  <div class="bgonly">
+    <div class="glow a"></div><div class="glow b"></div><div class="grid"></div>
+    <div class="copy">
+      <p class="eyebrow">طراحی</p>
+      <h2>اول برای <b>موبایل</b>،<br />با حالت تاریک</h2>
+      <p>جست‌وجوی خانه بیشتر روی گوشی است؛ کارت‌ها، فیلترها و نقشه برای یک دست طراحی شده‌اند.</p>
+    </div>
+  </div>
+  <div class="frameonly"><div class="bezel"></div><div class="island"></div></div>
+  <script>if (location.search.includes('frame')) document.body.classList.add('frame')</script>
+</body>
+</html>
