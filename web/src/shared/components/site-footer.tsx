@@ -15,6 +15,7 @@ export function SiteFooter() {
           </p>
         </div>
         <div className="flex flex-wrap items-start gap-x-5 gap-y-2 md:justify-end">
+          <Link href="/demo/" className="hover:text-ink">ویدیوی دمو</Link>
           <Link href="/about/" className="hover:text-ink">این دمو چطور ساخته شد؟</Link>
           <Link href="/areas/" className="hover:text-ink">محله‌ها</Link>
           <a href="https://divar.ir" target="_blank" rel="noreferrer" className="hover:text-ink">منبع آگهی‌ها: دیوار</a>
