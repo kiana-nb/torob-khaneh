@@ -1,7 +1,9 @@
-import { Bot, Braces, ChartColumn, Columns3, Combine, Hash, House, ImageOff, ListOrdered, MessageSquareText, Rocket, Scale, Search, ShieldCheck, Smartphone, TrainFront, TrendingDown, TriangleAlert, Wallet } from 'lucide-react'
+import { ArrowLeft, Bot, Braces, ChartColumn, Columns3, Combine, Hash, House, ImageOff, ListOrdered, MessageSquareText, PlayCircle, Rocket, Scale, Search, ShieldCheck, Smartphone, TrainFront, TrendingDown, TriangleAlert, Wallet } from 'lucide-react'
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import type { ReactNode } from 'react'
 import { WEIGHTS } from '@/features/results/lib/rank'
+import { AuthorCard } from '@/features/about/components/author-card'
 import { BeforeAfter, Donut, Eyebrow, MergeDots, Meter, Pipeline, ProblemOrbit, SplitBar, WeightBars } from '@/features/about/components/about-visuals'
 import { ProductTour } from '@/features/about/components/product-tour'
 import { CountUp, HeroCopy, HeroItem, HeroTitle, Reveal, RevealGroup, RevealItem } from '@/features/landing/components/motion'
@@ -46,7 +48,11 @@ export default function AboutPage() {
                 <p className="mt-4 max-w-xl text-[15px] leading-8 text-white/70">مستأجر تهرانی هر شب ده‌ها آگهی را اسکرول می‌کند که نصفشان تکراری، طعمه یا غیرقابل مقایسه‌اند. ترب خانه همان کاری را با خانه می‌کند که ترب با قیمت کالا:</p>
                 <p className="mt-2 max-w-xl text-[15px] font-bold leading-8 text-white">جمع‌آوری، نرمال‌سازی، ادغام، رتبه‌بندی بر اساس نیت کاربر، و توضیح.</p>
               </HeroItem>
-              <HeroItem className="mt-6 flex flex-wrap gap-2 text-[12px] text-white/60">
+              <HeroItem className="mt-6 flex flex-wrap items-center gap-2 text-[12px] text-white/60">
+                <a href="#video" className="inline-flex items-center gap-1.5 rounded-full bg-brand px-3.5 py-1.5 text-[12.5px] font-bold text-white shadow-[0_8px_24px_-8px_rgb(225_29_72/0.7)] transition hover:bg-brand-strong">
+                  <PlayCircle className="size-4" />
+                  ویدیوی دمو · ۴ دقیقه
+                </a>
                 {['کاملاً سمت فرانت', `${faNum(report.parsed)} آگهی واقعی`, 'بدون داده‌ی تماس'].map((t) => (
                   <span key={t} className="rounded-full bg-white/[0.06] px-3 py-1 ring-1 ring-white/10">{t}</span>
                 ))}
@@ -61,6 +67,23 @@ export default function AboutPage() {
       </section>
 
       <div className="mx-auto max-w-[1180px] space-y-24 px-4 pt-20 md:px-6">
+        {/* the submission video */}
+        <section id="video" className="scroll-mt-24">
+          <Reveal className="mb-6 flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <Eyebrow>ویدیوی دمو · ۳:۵۲ دقیقه</Eyebrow>
+              <h2 className="mt-2 text-[28px] font-black md:text-[34px]">مسئله، محصول و تصمیم‌ها در ۴ دقیقه</h2>
+            </div>
+            <Link href="/demo/" className="inline-flex h-10 items-center gap-1.5 rounded-full bg-surface px-4 text-[13.5px] font-semibold ring-1 ring-line hover:ring-line-strong">
+              صفحه‌ی ویدیو و لینک‌ها <ArrowLeft className="size-4" />
+            </Link>
+          </Reveal>
+          <Reveal delay={0.1} className="overflow-hidden rounded-[22px] bg-black shadow-e3 ring-1 ring-line">
+            {/* preload none: the 60 MB file only loads when someone presses play */}
+            <video src="/demo/torob-khaneh-demo.mp4" poster="/demo/poster.jpg" controls preload="none" playsInline className="aspect-video w-full" />
+          </Reveal>
+        </section>
+
         {/* product tour: real screenshots of this build */}
         <section>
           <Reveal className="mb-8">
@@ -236,6 +259,11 @@ export default function AboutPage() {
             </ol>
           </RevealItem>
         </RevealGroup>
+
+        {/* who built it */}
+        <Reveal>
+          <AuthorCard />
+        </Reveal>
       </div>
     </div>
   )

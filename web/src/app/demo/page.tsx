@@ -1,6 +1,7 @@
 import { ArrowLeft, Code2, PlayCircle, Sparkles } from 'lucide-react'
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { AuthorLine } from '@/features/about/components/author-card'
 
 export const metadata: Metadata = { title: 'ویدیوی دمو' }
 
@@ -53,6 +54,10 @@ export default function DemoVideoPage() {
           </span>
           <ArrowLeft className="size-4 text-muted transition group-hover:-translate-x-1" />
         </Link>
+      </div>
+
+      <div className="mt-6">
+        <AuthorLine />
       </div>
     </div>
   )
