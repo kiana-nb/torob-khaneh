@@ -14,15 +14,15 @@ Real listings are crawled once, then normalized, deduplicated and enriched into 
 - Map with price pins, filters as URL state (every search is shareable), compare up to 4 homes (shareable link), saved homes, "where can I afford?" neighborhood explorer, light/dark mode, RTL, and a mobile-first layout.
 
 ## Numbers (crawled 2026‑09‑23 / ۱ مهر ۱۴۰۵)
-739 listings → 733 parsed → **713 homes** (466 rent, 247 buy) in 20 neighborhoods · 141 metro stations (Wikidata) ·
-**33% of ads say their photos are not of this property** · 52% agency ads · 49% bumped ads · 39 duplicate ads merged into 19 homes.
+739 listings → 718 parsed (15 roommate/dorm ads and 6 without an area skipped) → **698 homes** (451 rent, 247 buy) in 20 neighborhoods · 141 metro stations (Wikidata) ·
+**33% of ads say their photos are not of this property** · 53% agency ads · 50% bumped ads · 39 duplicate ads merged into 19 homes.
 
 ## Run
 ```bash
 cd web
 npm install
 npm run dev                      # http://localhost:3000
-npm run build                    # static export → web/out (743 pages)
+npm run build                    # static export → web/out (729 pages)
 node scripts/serve-static.mjs    # serve web/out on :4311
 npx tsx scripts/intent.test.ts   # 20 parser cases
 ```

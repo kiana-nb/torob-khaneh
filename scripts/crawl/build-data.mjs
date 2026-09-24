@@ -126,6 +126,8 @@ for (const f of readdirSync(new URL('posts/', C))) {
   const d = dById.get(row.districtId)
   const geo = p ? { lat: +p.latitude, lng: +p.longitude, approx: !point?.exact_data } : d ? { lat: d.centroid.latitude, lng: d.centroid.longitude, approx: true } : undefined
   const title = clean(sec('TITLE')[0]?.data?.title || row.title || '')
+  // roommate / dorm ads rent a bed, not an apartment: they would skew medians and top the "cheapest" sort
+  if (/هم[\s‌]?خ[وا]نه|خوابگاه|اقامتگاه|اشتراکی/.test(title)) { skip('shared'); continue }
   const description = stripContacts(sec('DESCRIPTION').find((w) => w.widget_type === 'DESCRIPTION_ROW')?.data?.text || '').slice(0, 900)
   const stockPhotos = /خیر/.test(kv['تصویر‌ها برای همین ملک است؟'] || kv['تصویرها برای همین ملک است؟'] || '')
   const postedAt = postedFromSeo(j.seo?.title) || CRAWLED_AT

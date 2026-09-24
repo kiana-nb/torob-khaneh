@@ -1,6 +1,6 @@
 'use client'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ArrowUpDown, Info, List, Map as MapIcon, RefreshCw, SearchX, SlidersHorizontal, X } from 'lucide-react'
+import { Info, List, Map as MapIcon, RefreshCw, SearchX, SlidersHorizontal, X } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import { useMemo, useState } from 'react'
 import neighborhoods from '@/data/neighborhoods.json'
@@ -8,7 +8,8 @@ import { SearchBar } from '@/features/search/components/search-bar'
 import { FiltersSheet } from '@/features/search/components/filters-sheet'
 import { IntentChips } from '@/features/search/components/intent-chips'
 import { parseQuery, removeSpan, type IntentChip } from '@/features/search/lib/intent'
-import { mergeIntent, SORTS, sortLabels, useSearchState, type SearchState } from '@/features/search/lib/url-state'
+import { mergeIntent, useSearchState, type SearchState } from '@/features/search/lib/url-state'
+import { SortMenu } from './sort-menu'
 import { Button } from '@/shared/components/ui/button'
 import { Skeleton } from '@/shared/components/ui/skeleton'
 import { useHomeIndex } from '@/shared/hooks/use-home-index'
@@ -102,15 +103,7 @@ export function SearchResults() {
             <span className="sm:hidden">چرا این ترتیب؟</span>
             <span className="hidden sm:inline">چطور رتبه‌بندی می‌کنیم؟</span>
           </button>
-          <label className="relative inline-flex h-9 items-center rounded-full bg-surface ps-3 pe-8 text-[13px] font-medium ring-1 ring-line">
-            <ArrowUpDown className="pointer-events-none absolute end-3 size-3.5 text-muted" />
-            <span className="sr-only">مرتب‌سازی</span>
-            <select value={state.sort} onChange={(e) => patch({ sort: e.target.value as SearchState['sort'] })} className="h-full appearance-none bg-transparent pe-1 outline-none">
-              {SORTS.map((s) => (
-                <option key={s} value={s}>{sortLabels[s]}</option>
-              ))}
-            </select>
-          </label>
+          <SortMenu value={state.sort} onChange={(sort) => patch({ sort })} />
         </div>
       </div>
 
