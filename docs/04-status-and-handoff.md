@@ -42,13 +42,14 @@
 ---
 
 ## ۳. ویدیوی دمو (ساخته‌شده، تأییدشده، ارسال‌شده)
-- نسخه‌ی نهایی: **deep-urban**، ۳:۵۲ دقیقه، 1080p، ~۶۰ MB. کپی در `web/public/demo/torob-khaneh-demo.mp4` + `poster.jpg`.
+- نسخه‌ی نهایی: **deep-urban**، ۳:۵۲ دقیقه، 1080p، ~۶۶ MB. کپی در `web/public/demo/torob-khaneh-demo.mp4` + `poster.jpg`.
 - صدا: ElevenLabs v3، صدای **Jane (Professional Audiobook Reader)**، با تگ‌های لحن. take‌های انتخابی کیانا: `1b, 2b, 3b, 4a, 5b, 6a, 7b, 8b, 9a` ← `voice/final/s1..s9.mp3`. متن تگ‌دار: `docs/03b-elevenlabs-script.txt`.
 - موسیقی: «Deep Urban» از Mixkit (رایگان)، زیر صدا با −30 LUFS + ducking. نسخه‌های دیگر (vastness، rest-now) هم ساخته شد و رد شد.
 - ابزار ساخت در `video/` (Node + playwright-core + ffmpeg):
   - `scenes.mjs` (۱۷ شات)، `timeline.mjs` (زمان‌بندی روی طول فایل‌های صدا)، `record.mjs` (ضبط هر شات از سایت با CDP screencast، ۱۵۳۶×۸۶۴ @ DPR 1.25 = 1080p)، `overlay.mjs` (زیرنویس و chapter به‌صورت PNG شفاف ← qtrle)، `compose.mjs` (مونتاژ، loudnorm −16 LUFS).
   - `node compose.mjs --music music/deep-urban.mp3` خروجی را در `video/out/` می‌سازد؛ `--reuse` فقط صدا را دوباره می‌سازد.
   - `video/music`، `video/out`، `video/.build`، `voice/` در git نیستند (حجم و لایسنس).
+- رنگ: فریم‌ها از اسکرین‌شات‌اند و خروجی اول برچسب full range (yuvj420p، pc) داشت؛ Chrome آن را روشن‌تر و سوخته نشان می‌داد. ۲۰۲۶-۰۹-۲۴ به limited range / bt709 تبدیل شد (محتوا یکی، PSNR ≈ ۴۵dB) و `compose.mjs` هم همین تبدیل را در encode نهایی دارد. آپارات و درایو نسخه‌ی قبلی را دارند (خودشان re-encode می‌کنند).
 - یک حدس باز: شاید take `s8b` یک جمله کم داشته باشد. کیانا ویدیو را همین‌طور تأیید کرد.
 
 ## ۴. ارسال فرم ترب (برای یادآوری)
@@ -63,7 +64,7 @@
 
 ## ۶. Vercel و در دسترس ماندن سایت
 - پلن Hobby روی deploymentهای production **تاریخ انقضا ندارد**. `torob-khaneh.vercel.app` تا وقتی پروژه پاک نشود بالا می‌ماند، حتی اگر مدت‌ها push نشود.
-- چیزهایی که واقعاً می‌توانند سایت را پایین بیاورند: پاک کردن یا تغییر نام پروژه، پاک کردن اکانت یا قطع اتصال GitHub، رد شدن سقف مصرف ماهانه‌ی Hobby (مهم‌ترینش bandwidth ۱۰۰GB؛ ویدیوی ۶۰MB یعنی حدود ۱۶۰۰ بار دانلود کامل)، و build خراب بعد از push (نسخه‌ی قبلی بالا می‌ماند).
+- چیزهایی که واقعاً می‌توانند سایت را پایین بیاورند: پاک کردن یا تغییر نام پروژه، پاک کردن اکانت یا قطع اتصال GitHub، رد شدن سقف مصرف ماهانه‌ی Hobby (مهم‌ترینش bandwidth ۱۰۰GB؛ ویدیوی ۶۶MB یعنی حدود ۱۵۰۰ بار دانلود کامل)، و build خراب بعد از push (نسخه‌ی قبلی بالا می‌ماند).
 - لینک‌هایی که «منقضی» می‌شوند معمولاً URLهای preview با hash هستند (`torob-khaneh-abc123-kiana.vercel.app`) یا preview‌هایی که Deployment Protection دارند. همیشه دامنه‌ی production را بده.
 - احتیاط پیشنهادی: `preload="none"` روی ویدیوها (در `/about` هست، در `/demo` `metadata` است)، و در صورت نیاز فقط Aparat یا Drive را embed کن تا bandwidth مصرف نشود. برای پایش: Vercel ← Project ← Usage.
 

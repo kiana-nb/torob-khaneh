@@ -79,7 +79,7 @@ export default function AboutPage() {
             </Link>
           </Reveal>
           <Reveal delay={0.1} className="overflow-hidden rounded-[22px] bg-black shadow-e3 ring-1 ring-line">
-            {/* preload none: the 60 MB file only loads when someone presses play */}
+            {/* preload none: the 66 MB file only loads when someone presses play */}
             <video src="/demo/torob-khaneh-demo.mp4" poster="/demo/poster.jpg" controls preload="none" playsInline className="aspect-video w-full" />
           </Reveal>
         </section>

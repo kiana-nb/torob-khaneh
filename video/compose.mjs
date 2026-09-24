@@ -96,9 +96,10 @@ const final = path.join(OUTDIR, `torob-khaneh-demo${music ? '-' + path.basename(
 // the finished picture (screen + subtitles) is encoded once; every sound variant is just muxed onto it
 const graded = path.join(BUILD, 'video-final.mp4')
 if (!reuse || !fs.existsSync(graded)) {
+  // frames come from screenshots (full-range JPEG/PNG): convert to limited-range BT.709 and tag it, or Chrome shows the video too bright
   ff(['-i', picture, '-i', ov.video,
-    '-filter_complex', '[0:v][1:v]overlay=0:0:format=auto,format=yuv420p[v]',
-    '-map', '[v]', '-c:v', 'libx264', '-preset', 'slow', '-crf', '19', '-profile:v', 'high', '-pix_fmt', 'yuv420p', '-t', total.toFixed(3), graded])
+    '-filter_complex', '[0:v][1:v]overlay=0:0:format=auto,scale=in_range=pc:out_range=tv:in_color_matrix=bt601:out_color_matrix=bt709,format=yuv420p[v]',
+    '-map', '[v]', '-c:v', 'libx264', '-preset', 'slow', '-crf', '19', '-profile:v', 'high', '-pix_fmt', 'yuv420p', '-color_range', 'tv', '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709', '-t', total.toFixed(3), graded])
   console.log('✓ picture + subtitles encoded')
 }
 ff(['-i', graded, '-i', sound, '-map', '0:v', '-map', '1:a', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-movflags', '+faststart', '-t', total.toFixed(3), final])

@@ -26,7 +26,7 @@ export default function DemoVideoPage() {
       </div>
       <p className="mt-3 text-[12.5px] text-muted">
         ۳:۵۲ دقیقه · 1080p · زیرنویس فارسی داخل ویدیو است. روایت با صدای ساخته‌شده در ElevenLabs است.{' '}
-        <a href={VIDEO} download className="font-semibold text-ink underline decoration-line-strong underline-offset-4 hover:decoration-ink">دانلود فایل (۶۰ مگابایت)</a>
+        <a href={VIDEO} download className="font-semibold text-ink underline decoration-line-strong underline-offset-4 hover:decoration-ink">دانلود فایل (۶۶ مگابایت)</a>
       </p>
 
       <div className="mt-8 grid gap-3 sm:grid-cols-3">
