@@ -1,4 +1,24 @@
-# ترب خانه · Torob for Homes (demo)
+<p align="center">
+  <img src="docs/brand/logo-mark.svg" width="84" alt="Torob Khaneh logo">
+</p>
+
+<h1 align="center">ترب خانه · Torob for Homes</h1>
+
+<p align="center">
+  <a href="https://torob-khaneh.vercel.app"><img src="https://img.shields.io/badge/%E2%96%B6%20Live%20demo-torob--khaneh.vercel.app-e11d48?style=for-the-badge&labelColor=131316" alt="Live demo: torob-khaneh.vercel.app"></a>
+</p>
+
+<p align="center">
+  <b><a href="https://torob-khaneh.vercel.app">Open the demo</a></b> ·
+  <a href="https://torob-khaneh.vercel.app/search/?q=%D8%AF%D9%88%D8%AE%D9%88%D8%A7%D8%A8%D9%87%20%D9%86%D8%B2%D8%AF%DB%8C%DA%A9%20%D9%85%D8%AA%D8%B1%D9%88%20%D8%A8%D8%A7%20%DB%B2%20%D9%85%DB%8C%D9%84%DB%8C%D8%A7%D8%B1%D8%AF%20%D8%B1%D9%87%D9%86">Try a search</a> ·
+  <a href="https://torob-khaneh.vercel.app/about/">How it was built</a>
+</p>
+
+<p align="center">
+  <a href="https://torob-khaneh.vercel.app"><img src="web/public/shots/search.webp" width="900" alt="Search results: Persian sentence parsed into chips, ranked homes with reasons, price pins on the map"></a>
+</p>
+
+---
 
 A demo for Torob's **AI Product Engineer** challenge ("build Torob for X"), where X = **apartments in Tehran**.
 Real listings are crawled once, then normalized, deduplicated and enriched into JSON. The app is **frontend-only** (Next.js static export).
@@ -26,6 +46,8 @@ npm run build                    # static export → web/out (729 pages)
 node scripts/serve-static.mjs    # serve web/out on :4311
 npx tsx scripts/intent.test.ts   # 20 parser cases
 ```
+
+**Deploy:** Vercel project with root directory `web` (Next.js preset). Every push to `main` redeploys **https://torob-khaneh.vercel.app**.
 
 ## Data pipeline (`scripts/crawl`, run locally, never in the browser)
 ```bash
