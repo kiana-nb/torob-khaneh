@@ -34,34 +34,32 @@ export default function AboutPage() {
   return (
     <div className="pb-12">
       {/* hero */}
-      <section className="px-3 pt-3 md:px-6 md:pt-5">
-        <div className="relative mx-auto max-w-[1320px] overflow-hidden rounded-[28px] bg-[#0f0f12] text-white ring-1 ring-white/[0.06]">
-          <div className="blob-drift pointer-events-none absolute -top-48 end-[-8%] size-[560px] rounded-full bg-[#e11d48] opacity-30 blur-[150px]" />
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgb(255_255_255/0.035)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.035)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_at_center,#000_30%,transparent_75%)]" />
-          <div className="relative grid items-center gap-10 px-5 py-12 md:px-12 md:py-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-            <HeroCopy>
-              <HeroItem>
-                <Eyebrow onDark>برای تیم ترب · چالش AI Product Engineer</Eyebrow>
-              </HeroItem>
-              <HeroTitle lead="«ترب ... رو بساز»" accent="ترب خانه." />
-              <HeroItem>
-                <p className="mt-4 max-w-xl text-[15px] leading-8 text-white/70">مستأجر تهرانی هر شب ده‌ها آگهی را اسکرول می‌کند که نصفشان تکراری، طعمه یا غیرقابل مقایسه‌اند. ترب خانه همان کاری را با خانه می‌کند که ترب با قیمت کالا:</p>
-                <p className="mt-2 max-w-xl text-[15px] font-bold leading-8 text-white">جمع‌آوری، نرمال‌سازی، ادغام، رتبه‌بندی بر اساس نیت کاربر، و توضیح.</p>
-              </HeroItem>
-              <HeroItem className="mt-6 flex flex-wrap items-center gap-2 text-[12px] text-white/60">
-                <a href="#video" className="inline-flex items-center gap-1.5 rounded-full bg-brand px-3.5 py-1.5 text-[12.5px] font-bold text-white shadow-[0_8px_24px_-8px_rgb(225_29_72/0.7)] transition hover:bg-brand-strong">
-                  <PlayCircle className="size-4" />
-                  ویدیوی دمو · ۴ دقیقه
-                </a>
-                {['کاملاً سمت فرانت', `${faNum(report.parsed)} آگهی واقعی`, 'بدون داده‌ی تماس'].map((t) => (
-                  <span key={t} className="rounded-full bg-white/[0.06] px-3 py-1 ring-1 ring-white/10">{t}</span>
-                ))}
-              </HeroItem>
-            </HeroCopy>
-            <div>
-              <ProblemOrbit problems={PROBLEMS} query="دوخوابه نزدیک مترو با ۲ میلیارد رهن، پارکینگ داشته باشه" />
-              <p className="mt-3 text-center text-[12px] font-medium text-white/45 max-lg:text-start">مسئله‌هایی که پشت یک جست‌وجو حل می‌شوند</p>
-            </div>
+      <section className="relative overflow-hidden bg-[#0f0f12] text-white">
+        <div className="blob-drift pointer-events-none absolute -top-48 end-[-8%] size-[560px] rounded-full bg-[#e11d48] opacity-30 blur-[150px]" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgb(255_255_255/0.035)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.035)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_at_center,#000_30%,transparent_75%)]" />
+        <div className="relative mx-auto grid max-w-[1320px] items-center gap-10 px-5 py-12 md:px-12 md:py-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+          <HeroCopy>
+            <HeroItem>
+              <Eyebrow onDark>برای تیم ترب · چالش AI Product Engineer</Eyebrow>
+            </HeroItem>
+            <HeroTitle lead="«ترب ... رو بساز»" accent="ترب خانه." />
+            <HeroItem>
+              <p className="mt-4 max-w-xl text-[15px] leading-8 text-white/70">مستأجر تهرانی هر شب ده‌ها آگهی را اسکرول می‌کند که نصفشان تکراری، طعمه یا غیرقابل مقایسه‌اند. ترب خانه همان کاری را با خانه می‌کند که ترب با قیمت کالا:</p>
+              <p className="mt-2 max-w-xl text-[15px] font-bold leading-8 text-white">جمع‌آوری، نرمال‌سازی، ادغام، رتبه‌بندی بر اساس نیت کاربر، و توضیح.</p>
+            </HeroItem>
+            <HeroItem className="mt-6 flex flex-wrap items-center gap-2 text-[12px] text-white/60">
+              <a href="#video" className="inline-flex items-center gap-1.5 rounded-full bg-brand px-3.5 py-1.5 text-[12.5px] font-bold text-white shadow-[0_8px_24px_-8px_rgb(225_29_72/0.7)] transition hover:bg-brand-strong">
+                <PlayCircle className="size-4" />
+                ویدیوی دمو · ۴ دقیقه
+              </a>
+              {['کاملاً سمت فرانت', `${faNum(report.parsed)} آگهی واقعی`, 'بدون داده‌ی تماس'].map((t) => (
+                <span key={t} className="rounded-full bg-white/[0.06] px-3 py-1 ring-1 ring-white/10">{t}</span>
+              ))}
+            </HeroItem>
+          </HeroCopy>
+          <div>
+            <ProblemOrbit problems={PROBLEMS} query="دوخوابه نزدیک مترو با ۲ میلیارد رهن، پارکینگ داشته باشه" />
+            <p className="mt-3 text-center text-[12px] font-medium text-white/45 max-lg:text-start">مسئله‌هایی که پشت یک جست‌وجو حل می‌شوند</p>
           </div>
         </div>
       </section>
@@ -202,11 +200,12 @@ export default function AboutPage() {
             <WeightBars rows={(Object.keys(WEIGHTS) as Array<keyof typeof WEIGHTS>).map((k) => ({ label: W_LABEL[k], w: WEIGHTS[k] }))} />
           </Reveal>
         </section>
+      </div>
 
-        {/* principles */}
-        <section className="relative overflow-hidden rounded-[28px] bg-[#0f0f12] px-6 py-12 ring-1 ring-white/[0.06] text-white md:px-12 md:py-16">
+      {/* principles */}
+      <section className="relative mt-24 overflow-hidden bg-[#0f0f12] text-white">
           <div className="pointer-events-none absolute -bottom-40 start-[-10%] size-[480px] rounded-full bg-[#e11d48] opacity-25 blur-[140px]" />
-          <div className="relative grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+          <div className="relative mx-auto grid max-w-[1180px] gap-10 px-6 py-12 md:px-12 md:py-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <Reveal>
               <Eyebrow onDark>چطور ساخته شد</Eyebrow>
               <p className="mt-3 text-[40px] font-black leading-[1.15] md:text-[56px]">
@@ -236,6 +235,7 @@ export default function AboutPage() {
           </div>
         </section>
 
+      <div className="mx-auto max-w-[1180px] space-y-24 px-4 pt-24 md:px-6">
         {/* limits & next */}
         <RevealGroup className="grid gap-4 md:grid-cols-2">
           <RevealItem className="rounded-[22px] bg-warn-soft p-6">

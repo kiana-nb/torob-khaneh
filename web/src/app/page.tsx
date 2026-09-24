@@ -27,48 +27,46 @@ export default function Landing() {
   return (
     <div className="pb-6">
       {/* hero */}
-      <section className="px-3 pt-3 md:px-6 md:pt-5">
-        <div className="relative mx-auto max-w-[1320px] overflow-hidden rounded-[28px] bg-[#131316] text-white">
-          <div className="blob-drift pointer-events-none absolute -top-40 start-[-10%] size-[520px] rounded-full bg-[#e11d48] opacity-35 blur-[140px]" />
-          <div className="blob-drift pointer-events-none absolute -bottom-48 end-[20%] size-[420px] rounded-full bg-[#7c3aed] opacity-20 blur-[140px] [animation-delay:-9s] [animation-duration:26s]" />
-          <div className="relative grid items-center gap-10 px-5 py-12 md:px-12 md:py-16 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
-            <HeroCopy>
-              <HeroItem>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[12.5px] font-medium text-white/85 ring-1 ring-white/15">
-                  <Sparkles className="size-3.5" />
-                  ترب، این بار برای خانه
-                </span>
-              </HeroItem>
-              <HeroTitle lead="همه‌ی خانه‌های تهران،" accent="یک‌جا و قابل مقایسه." />
-              <HeroItem>
-                <p className="mt-4 max-w-xl text-[15px] leading-8 text-white/70 md:text-[16px]">
-                  مثل آدم بنویس دنبال چه خانه‌ای هستی. آگهی‌های تکراری را یکی می‌کنیم، رهن و اجاره را به یک عدد تبدیل می‌کنیم و می‌گوییم هر خانه چرا برای تو خوب است.
-                </p>
-              </HeroItem>
-              <HeroItem className="mt-7 max-w-2xl">
-                <SearchBar variant="hero" />
-              </HeroItem>
-            </HeroCopy>
-            <PhotoWall
-              photos={wall}
-              merged={{ listings: report.mergedListings, homes: report.mergedHomes }}
-              deal={top?.equivRent && top.vsAreaMedian !== undefined ? { neighborhood: top.neighborhood, rooms: roomsLabel(top.rooms), price: toman(top.equivRent), pct: percent(top.vsAreaMedian) } : undefined}
-            />
-          </div>
-          <dl className="relative grid grid-cols-2 border-t border-white/10 md:grid-cols-4">
-            {[
-              [<CountUp key="a" value={report.parsed} />, 'آگهی تحلیل‌شده'],
-              [<CountUp key="b" value={report.neighborhoods} />, 'محله‌ی تهران'],
-              [<CountUp key="c" value={stockShare} kind="pct" />, 'آگهی با «عکس نمونه»'],
-              [<CountUp key="d" value={report.metroStations} />, 'ایستگاه مترو برای فاصله‌سنجی'],
-            ].map(([n, l]) => (
-              <div key={String(l)} className="border-white/10 px-5 py-4 md:border-e md:px-8 [&:nth-child(odd)]:border-e md:[&:last-child]:border-e-0">
-                <dt className="text-[12px] text-white/55">{l}</dt>
-                <dd className="tabular mt-0.5 text-[22px] font-extrabold">{n}</dd>
-              </div>
-            ))}
-          </dl>
+      <section className="relative overflow-hidden bg-[#131316] text-white">
+        <div className="blob-drift pointer-events-none absolute -top-40 start-[-10%] size-[520px] rounded-full bg-[#e11d48] opacity-35 blur-[140px]" />
+        <div className="blob-drift pointer-events-none absolute -bottom-48 end-[20%] size-[420px] rounded-full bg-[#fb5475] opacity-20 blur-[140px] [animation-delay:-9s] [animation-duration:26s]" />
+        <div className="relative mx-auto grid max-w-[1320px] items-center gap-10 px-5 py-12 md:px-12 md:py-16 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+          <HeroCopy>
+            <HeroItem>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[12.5px] font-medium text-white/85 ring-1 ring-white/15">
+                <Sparkles className="size-3.5" />
+                ترب، این بار برای خانه
+              </span>
+            </HeroItem>
+            <HeroTitle lead="همه‌ی خانه‌های تهران،" accent="یک‌جا و قابل مقایسه." />
+            <HeroItem>
+              <p className="mt-4 max-w-xl text-[15px] leading-8 text-white/70 md:text-[16px]">
+                مثل آدم بنویس دنبال چه خانه‌ای هستی. آگهی‌های تکراری را یکی می‌کنیم، رهن و اجاره را به یک عدد تبدیل می‌کنیم و می‌گوییم هر خانه چرا برای تو خوب است.
+              </p>
+            </HeroItem>
+            <HeroItem className="mt-7 max-w-2xl">
+              <SearchBar variant="hero" />
+            </HeroItem>
+          </HeroCopy>
+          <PhotoWall
+            photos={wall}
+            merged={{ listings: report.mergedListings, homes: report.mergedHomes }}
+            deal={top?.equivRent && top.vsAreaMedian !== undefined ? { neighborhood: top.neighborhood, rooms: roomsLabel(top.rooms), price: toman(top.equivRent), pct: percent(top.vsAreaMedian) } : undefined}
+          />
         </div>
+        <dl className="relative mx-auto grid max-w-[1320px] grid-cols-2 border-t border-white/10 md:grid-cols-4">
+          {[
+            [<CountUp key="a" value={report.parsed} />, 'آگهی تحلیل‌شده'],
+            [<CountUp key="b" value={report.neighborhoods} />, 'محله‌ی تهران'],
+            [<CountUp key="c" value={stockShare} kind="pct" />, 'آگهی با «عکس نمونه»'],
+            [<CountUp key="d" value={report.metroStations} />, 'ایستگاه مترو برای فاصله‌سنجی'],
+          ].map(([n, l]) => (
+            <div key={String(l)} className="border-white/10 px-5 py-4 md:border-e md:px-8 [&:nth-child(odd)]:border-e md:[&:last-child]:border-e-0">
+              <dt className="text-[12px] text-white/55">{l}</dt>
+              <dd className="tabular mt-0.5 text-[22px] font-extrabold">{n}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
       <div className="mx-auto max-w-[1320px] space-y-20 px-4 pt-16 md:px-6">
