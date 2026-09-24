@@ -142,21 +142,68 @@ body {
     opacity: 0;
   }
 }
-@keyframes sheet-up {
-  from {
-    transform: translateY(100%);
-  }
-}
-@keyframes pop-in {
-  from {
-    opacity: 0;
-    transform: scale(0.97);
-  }
-}
 @keyframes shimmer {
   to {
     background-position: -200% 0;
   }
+}
+
+/* landing hero: endless photo columns, floating cards, drifting glow */
+.wall-track {
+  animation: wall-up linear infinite;
+  will-change: transform;
+}
+.wall-track.wall-down {
+  animation-name: wall-down;
+}
+@keyframes wall-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    /* one copy of the list + one gap */
+    transform: translateY(calc(-50% - 6px));
+  }
+}
+@keyframes wall-down {
+  from {
+    transform: translateY(calc(-50% - 6px));
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.wall-mask {
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+}
+.float-bob {
+  animation: float-bob 8s ease-in-out infinite;
+}
+@keyframes float-bob {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.blob-drift {
+  animation: blob-drift 22s ease-in-out infinite alternate;
+}
+@keyframes blob-drift {
+  to {
+    transform: translate(60px, 40px) scale(1.12);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wall-track,
+  .float-bob,
+  .blob-drift {
+    animation: none !important;
+  }
+}
+
+/* Leaflet panes use z-index 400–1000; keep them inside the map so they never cover the sticky header or sheets */
+.leaflet-container {
+  isolation: isolate;
+  z-index: 0;
 }
 
 /* leaflet price pins */
